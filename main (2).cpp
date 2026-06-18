@@ -22,31 +22,33 @@ using namespace std;
 // bool isEmpty();
 // bool isFull();
 // void print();
-void menuRegWarga();
-void menuRegPetugas();
+//void menuRegWarga();
+//void menuRegPetugas();
 void regWarga();
 void regPetugas();
 void loginWarga();
 void loginPetugas();
 void MMWarga();
 void MMPetugas();
+void menuRegistrasi();
+void menuLogin();
 
 int main(){
     int pilihMenu;
     system("clear");
     do{
-        cout << ">>> LOGIN SEBAGAI PETUGAS ATAU WARGA <<<" << endl;
-        cout << "1. WARGA" << endl;
-        cout << "2. PETUGAS PEMBERSIHAN" << endl;
+        cout << ">>> Registrasi atau Login <<<" << endl;
+        cout << "1. Registrasi" << endl;
+        cout << "2. Login" << endl;
         cout << "3. Keluar" << endl;
         cout << "Masukkan pilihan anda: "; cin >> pilihMenu;
 
         switch(pilihMenu){
             case 1:
-            menuRegWarga();
+            menuRegistrasi();
             break;
             case 2:
-            menuRegPetugas();
+            menuLogin();
             break;
             case 3:
             break;
@@ -59,48 +61,20 @@ int main(){
     return 0;
 }
 
-//menu registrasi warga
-void menuRegWarga(){
+//menu registrasi warga/petugas
+void menuRegistrasi(){
     int opsi;
     system("clear");
     cin.ignore();
     do{
-    cout << ">>> Registarsi/Login sebagai Warga <<<" << endl;
-    cout << "1. Login" << endl;
-    cout << "2. Registrasi" << endl;
+    cout << ">>> Registarsi sebagai Warga atau Petugas Pembersihan <<<" << endl;
+    cout << "1. Registrasi Sebagai Warga" << endl;
+    cout << "2. Registrasi Sebagai Petugas Pembersihan" << endl;
     cout << "3. Kembali ke sebelumnya" << endl;
     cout << "Masukkan pilihan anda: "; cin >> opsi;
     switch(opsi){
         case 1:
-        loginWarga();
-        break;
-        case 2:
-	    regWarga();
-        break;
-        case 3:
-        main();
-        break;
-        default:
-        cout << "Pilihan tidak sesuai !!!" << endl;
-        break;
-    }
-    }while(opsi != 3);
-}
-
-//menu reguistrasi petugas pembersihan
-void menuRegPetugas(){
-    int opsi;
-    system("clear");
-    cin.ignore();
-    do{
-    cout << ">>> Registarsi/Login sebagai Petugas Pembersihan <<<" << endl;
-    cout << "1. Login" << endl;
-    cout << "2. Registrasi" << endl;
-    cout << "3. Kembali ke sebelumnya" << endl;
-    cout << "Masukkan pilihan anda: "; cin >> opsi;
-    switch(opsi){
-        case 1:
-        loginPetugas();
+        regWarga();
         break;
         case 2:
 	    regPetugas();
@@ -115,6 +89,90 @@ void menuRegPetugas(){
     }while(opsi != 3);
 }
 
+//menu login warga/petugas
+void menuLogin(){
+    int opsi;
+    system("clear");
+    cin.ignore();
+    do{
+    cout << ">>> Login sebagai Warga atau Petugas Pembersihan <<<" << endl;
+    cout << "1. Login Sebagai Warga" << endl;
+    cout << "2. Login Sebagai Petugas Pembersihan" << endl;
+    cout << "3. Kembali ke sebelumnya" << endl;
+    cout << "Masukkan pilihan anda: "; cin >> opsi;
+    switch(opsi){
+        case 1:
+        loginWarga();
+        break;
+        case 2:
+	    loginPetugas();
+        break;
+        case 3:
+        main();
+        break;
+        default:
+        cout << "Pilihan tidak sesuai !!!" << endl;
+        break;
+    }
+    }while(opsi != 3);
+}
+
+//menu registrasi warga
+// void menuRegWarga(){
+//     int opsi;
+//     system("clear");
+//     cin.ignore();
+//     do{
+//     cout << ">>> Registarsi/Login sebagai Warga <<<" << endl;
+//     cout << "1. Login" << endl;
+//     cout << "2. Registrasi" << endl;
+//     cout << "3. Kembali ke sebelumnya" << endl;
+//     cout << "Masukkan pilihan anda: "; cin >> opsi;
+//     switch(opsi){
+//         case 1:
+//         loginWarga();
+//         break;
+//         case 2:
+// 	    regWarga();
+//         break;
+//         case 3:
+//         main();
+//         break;
+//         default:
+//         cout << "Pilihan tidak sesuai !!!" << endl;
+//         break;
+//     }
+//     }while(opsi != 3);
+// }
+
+// //menu reguistrasi petugas pembersihan
+// void menuRegPetugas(){
+//     int opsi;
+//     system("clear");
+//     cin.ignore();
+//     do{
+//     cout << ">>> Registarsi/Login sebagai Petugas Pembersihan <<<" << endl;
+//     cout << "1. Login" << endl;
+//     cout << "2. Registrasi" << endl;
+//     cout << "3. Kembali ke sebelumnya" << endl;
+//     cout << "Masukkan pilihan anda: "; cin >> opsi;
+//     switch(opsi){
+//         case 1:
+//         loginPetugas();
+//         break;
+//         case 2:
+// 	    regPetugas();
+//         break;
+//         case 3:
+//         main();
+//         break;
+//         default:
+//         cout << "Pilihan tidak sesuai !!!" << endl;
+//         break;
+//     }
+//     }while(opsi != 3);
+//}
+
 
 //registrasi form warga
 void regWarga(){
@@ -128,7 +186,7 @@ void regWarga(){
 
     ifstream input("fWarga.txt");
     if(input.is_open()){
-        while(jumlahData < MAX_ARRAY && input arrRUsername[jumlahData] >> arrRPassword[jumlahData]){
+        while(jumlahData < MAX_ARRAY && input >> arrRUsername[jumlahData] >> arrRPassword[jumlahData]){
             jumlahData++;
         }
     }
@@ -194,10 +252,6 @@ void loginWarga(){
     ifstream input("fWarga.txt");
 
     while(jumlahData < MAX_ARRAY && input >> arrUsername[jumlahData] >> arrPassword[jumlahData]){
-        // if(uname == username && passwd == password){
-        //     isi = 1;
-        //     system("clear");
-        // }
         jumlahData++;
     }input.close();
 
@@ -307,4 +361,4 @@ void MMPetugas(){
 
 // void dequeue(){
 //     cout << "";
-// }9
+// }
